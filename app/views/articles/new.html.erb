@@ -1,0 +1,51 @@
+<%
+=begin%>
+ form builder  
+<%
+=end%>
+
+<%
+=begin%>
+ <h1>New Article</h1>
+
+<%= form_with model: @article do |form| %>
+  <div>
+    <%= form.label :title %><br>
+    <%= form.text_field :title %>
+    <% @article.errors.full_messages_for(:title).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :body %><br>
+    <%= form.text_area :body %>
+    <% @article.errors.full_messages_for(:body).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %> 
+<%
+=end%>
+<%= render "nav" %>
+<%
+=begin%>
+ <%= link_to "Index", root_path %> 
+<%
+=end%>
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+    </div>
+    <div class="col-6">
+      <h3 class="text-center">New Article</h3>
+      <%= render "form", article: @article %>
+    </div>
+  </div>
+</div>
+
+

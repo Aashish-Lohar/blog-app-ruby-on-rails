@@ -1,0 +1,79 @@
+<%= render "nav" %>
+ <div class="container mx-auto">
+<%
+=begin%>
+ <ul>
+    <% @articles.each do |article| %>
+        <li>
+            <a href="/articles/<%= article.id %>">
+                <%= article.title %>
+            </a>
+        </li>
+    <% end %>
+</ul> 
+<%
+=end%>
+
+<%
+=begin%>
+ the article_path helper returns "/articles/#{article.id}" when given an article. We can use it to tidy up our links in app/views/articles/index.html.erb: 
+<%
+=end%>
+
+<%
+=begin%>
+ <ul>
+    <% @articles.each do |article| %>
+        <li>
+            <a href="<%= article_path(article) %>">
+                <%= article.title %>
+            </a>
+        </li>
+    <% end %>
+</ul>  
+<%
+=end%>
+
+<%
+=begin%>
+ we will take this one step further by using the link_to helper. The link_to helper renders a link with its first argument as the link's text and its second argument as the link's destination. If we pass a model object as the second argument, link_to will call the appropriate path helper to convert the object to a path. For example, if we pass an article, link_to will call article_path. So app/views/articles/index.html.erb becomes: 
+<%
+=end%>
+
+<h2 class="text-secondary m-2">Our blog has <%= Article.public_count %> articles and counting!</h2>
+
+<div class="container d-flex flex-wrap justify-content-between ">
+    <% @articles.each do |article| %>
+        <% unless article.archived? %>
+        <div class="card mt-4" style="width: 22%;">
+            <div class="card-body">
+                <h5 class="card-title "><%= link_to article.title, article, class:"text-decoration-none" %></h5>
+                <p class="card-text truncate"><%= article.body %></p>
+                <%= link_to "Open article", article, class:"card-link text-decoration-none" %>
+                <%
+=begin%>
+ <a href="#" class="card-link">Another link</a> 
+<%
+=end%>
+            </div>
+        </div>
+        <% end %>
+    <% end %>
+</div>
+<%
+=begin%>
+ <ul class="d-flex">
+    <% @articles.each do |article| %>
+        <% unless article.archived? %>
+        <li>
+            <%= link_to article.title, article %>
+        </li>
+        <% end %>
+    <% end %>
+</ul>  
+<%
+=end%>
+
+
+
+</div>

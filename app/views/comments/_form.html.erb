@@ -1,0 +1,25 @@
+<%= form_with model:[@article, @article.comments.build] do |form| %>
+  <p>
+    <%= form.label :commenter,class:"form-label" %><br />
+    <%= form.text_field :commenter, class:"form-control" %>
+  </p>
+  <p>
+    <%= form.label :body,class:"form-label"  %><br />
+    <%= form.text_area :body, class:"form-control" %>
+  </p>
+
+  <p>
+    <%= form.label :status,class:"form-label" %><br>
+    <%= form.select :status, ['public', 'private', 'archived'], selected: 'public', class:"form-control" %>
+  </p>
+
+
+  <p>
+    <%
+=begin%>
+ <%= form.submit %> 
+<%
+=end%>
+    <input  class="btn btn-primary" type="submit" name="commit" value="Create Comment" data-disable-with="Create Comment">
+  </p>
+<% end %>

@@ -1,0 +1,35 @@
+<div class="container card">
+<%= form_with model: article do |form| %>
+<div class="card-body">
+  <div>
+    <%= form.label :title,class:"form-label" %><br>
+    <%= form.text_field :title, class:"form-control" %>
+    <% article.errors.full_messages_for(:title).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :body,class:"form-label"  %><br>
+    <%= form.text_area :body, class:"form-control" %><br>
+    <% article.errors.full_messages_for(:body).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div class="d-flex mb-4">
+    <%= form.label :status,class:"form-label"  %><br>
+    <%= form.select :status, ['public', 'private', 'archived'], selected: 'public', class:"form-control" %>
+  </div>
+
+  <div >
+    <%
+=begin%>
+ <%= form.submit %> 
+<%
+=end%>
+    <input class="btn btn-primary" type=submit name="commit" value="Create Article" data-disable-with="Create Article"/>
+  </div>
+<% end %>
+</div>
+</div>

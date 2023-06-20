@@ -1,0 +1,64 @@
+<%= render "nav" %>
+<div class="container mt-4 w-75">
+  <%
+=begin%>
+ <%= link_to "Index", root_path %> 
+<%
+=end%>
+  <div class="card mx-auto">
+    <div class="card-header d-flex justify-content-between align-items-center">
+    <h3 class=""><%= @article.title %> </h3>
+     <ul class="d-flex m-0 justify-content-end">
+      <li class="mx-2 list-unstyled "><%= link_to "Edit", edit_article_path(@article),class:"text-decoration-none" %></li>
+      <li class="mx-2 list-unstyled "><%= link_to "Destroy", article_path(@article),class:"text-decoration-none", data: {
+                        turbo_method: :delete,
+                        turbo_confirm: "Are you sure?"
+                      } %></li>
+      </ul>
+    </div>
+    <div class="card-body">
+      <%= @article.body %>
+    </div>
+  </div>
+<%
+=begin%>
+ <p><%= @article.body %></p> 
+<%
+=end%>
+
+<%
+=begin%>
+ <% @article.comments.each do |comment| %>
+  <p>
+    <strong>Commenter:</strong>
+    <%= comment.commenter %>
+  </p>
+
+  <p>
+    <strong>Comment:</strong>
+    <%= comment.body %>
+  </p>
+<% end %> 
+<%
+=end%>
+<div class="container mt-4">
+<h4>Comments</h4>
+  <div class="row position-relative">
+
+    <div class="col-8">
+      <%= render @article.comments %>
+    </div>
+
+    <div class="col-4">
+    <div class="position-sticky top-0 card">
+        <div class="card-header">
+          Add a comment
+        </div>
+        <div class="card-body">
+        <%= render 'comments/form' %>
+        </div>
+      </div>
+   </div>
+  </div>
+</div>
+
