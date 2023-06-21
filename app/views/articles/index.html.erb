@@ -1,5 +1,4 @@
-<%= render "nav" %>
- <div class="container mx-auto">
+
 <%
 =begin%>
  <ul>
@@ -40,12 +39,11 @@
 <%
 =end%>
 
-<h2 class="text-secondary m-2">Our blog has <%= Article.public_count %> articles and counting!</h2>
-
-<div class="container d-flex flex-wrap justify-content-between ">
+<h2 class="text-secondary">Our blog has <%= Article.public_count %> articles and counting!</h2>
+<div class="articles_container d-flex justify-content-start flex-wrap w-100">
     <% @articles.each do |article| %>
         <% unless article.archived? %>
-        <div class="card mt-4" style="width: 22%;">
+        <div class="article_card card m-3">
             <div class="card-body">
                 <h5 class="card-title "><%= link_to article.title, article, class:"text-decoration-none" %></h5>
                 <p class="card-text truncate"><%= article.body %></p>

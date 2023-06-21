@@ -13,13 +13,31 @@
  *= require_tree .
  *= require_self
  */
- @import "bootstrap";
+@import "bootstrap";
 
- .truncate {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 2; /* number of lines to show */
-            line-clamp: 2;
-    -webkit-box-orient: vertical;
- }
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* number of lines to show */
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+@media (min-width: 575.98px) {
+  .article_card {
+    width: 100%;
+  }
+}
+
+@media (min-width: 991.98px) {
+  .article_card {
+    width: 22%;
+  }
+}
+
+@media (min-width: 1199.98px) {
+  .article_card {
+    width: 22%;
+  }
+}

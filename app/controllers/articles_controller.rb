@@ -2,7 +2,10 @@ class ArticlesController < ApplicationController
   # http_basic_authenticate_with name: "dhh", password: "secret", except: [:index, :show]
   
   def index
+    flash.now[:notice]
+    flash.now[:alert]
     @articles = Article.all
+    
   end
 
   def show
